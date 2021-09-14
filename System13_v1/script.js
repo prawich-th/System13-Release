@@ -11,6 +11,8 @@ let calculate;
 let scoreData;
 let codeIndex;
 let reportList = [];
+let playerAmountVerification;
+let randomizationCount = 1;
 
 const Playerlist = {
     "p4": 4,
@@ -44,12 +46,19 @@ const Playerlist = {
 
 function getPlayerCode() {
     igp = Number(prompt("How many players are playing?"));
-    console.log(`${igp} Player(s) playing this round`);
+    console.log(`${igp} Player(s) is/are playing in this round`);
+    if (igp % 2 != 0) {
+      alert("Amount of player in \"ODD\" number which system can't handle");
+      return(false);
+    } else {
+      alert("Successfully set number of players playing");
+      playerCode = [];
+    };
     while (index != igp) {
-    playerCode.push(prompt("3 letter Alphanumeric code"));
-    console.log(`${playerCode} is/are in this matches`)
+    playerCode.push(prompt("Insert playing player codenames."));
+    console.log(`${playerCode} is/are in this matches`);
     index += 1;
-    }
+    };
     return(playerCode);
 }
 
@@ -99,6 +108,10 @@ function checkScore(mixedPlayers) {
         index -= 1;
         codeIndex += 1;
         console.log(`Dsn is now ${dsn}`);
+    }
+    if ((asn + dsn) % 2 != 0) {
+      alert("Team is impossible");
+      return(false);
     }
 
     console.log(asn, dsn)
@@ -168,13 +181,14 @@ function report(rpl, dScore, aScore) {
     document.getElementById("as").innerHTML = aScore;
     document.getElementById("ds").innerHTML = dScore;
 };
-function credits() {
 
-};
-
-function tester() {
-    alert("Test Started");
+function system13() {
+    alert("Lunching System 13");
     playerCode = getPlayerCode();
+    if(playerCode == false) {
+      console.log("Cancel Successfully")
+      return(false);
+    }
     checkScore(playerCode);
     mixedData = randomizer(playerCode);
     gdata = checkScore(mixedData);
@@ -183,9 +197,13 @@ function tester() {
     dScore = gdata.dsn;
     aScore = gdata.asn;
     Number(scoreData);
+    if (gdata == false) {
+      return(false);
+    } 
     console.log(scoreData);
     if (scoreData === 0) {
         while (scoreData !== 1) {
+        randomizationCount +=1
         mixedData = randomizer(mixedData);
         scoreData = checkScore(mixedData);
     }
@@ -200,3 +218,8 @@ function tester() {
     report(rpl, dScore, aScore);
 }
 
+// Html will execute this function
+function main() {
+  system13();
+  alert(`Discovered a team! with ${randomizationCount} time of randomisation`)
+}
