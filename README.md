@@ -18,4 +18,4 @@ We're on vertion Release 1.1 (SS)
 
 ## Lisence
 
-We're Lisence under the [MIT Lisence](LISENCE)
+We're Lisence under All Right Reserved & [MIT Lisence](LISENCE)
