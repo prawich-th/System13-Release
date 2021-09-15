@@ -183,7 +183,7 @@ function report(rpl, dScore, aScore) {
 };
 
 function system13() {
-    alert("Lunching System 13");
+    alert("Launching System 13");
     playerCode = getPlayerCode();
     if(playerCode == false) {
       console.log("Cancel Successfully")
